@@ -23,7 +23,7 @@ except ImportError:
     print("pip install pypdf", file=sys.stderr)
     sys.exit(2)
 
-LEFTOVER = re.compile(r"(\blorem\b|\bipsum\b|\bTODO\b|\bTBD\b|\bFIXME\b|\[insert[^\]]*\]|\[(?:your|author|date|name)[^\]]*\]|\bx{4,}\b)", re.I)
+LEFTOVER = re.compile(r"(\blorem\b|\bipsum\b|\bTODO\b|\bTBD\b|\bTBC\b|\bFIXME\b|\[(?!S?\d+\])[A-Za-z][^\]\n]{1,40}\]|\bx{4,}\b)", re.I)
 
 
 def main():

@@ -26,8 +26,8 @@ except ImportError:
     sys.exit(2)
 
 LEFTOVER = re.compile(
-    r"(\blorem\b|\bipsum\b|\bTODO\b|\bTBD\b|\bFIXME\b|placeholder text|\[insert[^\]]*\]|"
-    r"\[(?:your|author|date|name|team|company|client)[^\]]*\]|\bx{4,}\b)", re.I)
+    r"(\blorem\b|\bipsum\b|\bTODO\b|\bTBD\b|\bTBC\b|\bFIXME\b|placeholder text|"
+    r"\[(?!S?\d+\])[A-Za-z][^\]\n]{1,40}\]|\bx{4,}\b)", re.I)
 
 
 def main():

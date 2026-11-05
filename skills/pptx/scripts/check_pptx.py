@@ -30,9 +30,10 @@ except ImportError as e:  # pragma: no cover
     print(f"missing dependency: {e}. pip install python-pptx pillow", file=sys.stderr)
     sys.exit(2)
 
+# Bracketed placeholders start with a letter ([Owner TBC], [Name]); citation tags ([S1], [12]) are digits.
 LEFTOVER = re.compile(
-    r"(\blorem\b|\bipsum\b|\bTODO\b|\bTBD\b|\bFIXME\b|placeholder text|click to add|"
-    r"\[insert[^\]]*\]|\[(?:your|director|presenter|date|name|team|company|client)[^\]]*\]|\bx{4,}\b)",
+    r"(\blorem\b|\bipsum\b|\bTODO\b|\bTBD\b|\bTBC\b|\bFIXME\b|placeholder text|click to add|"
+    r"\[(?!S?\d+\])[A-Za-z][^\]\n]{1,40}\]|\bx{4,}\b)",
     re.I,
 )
 EMU_PER_PT = 12700
