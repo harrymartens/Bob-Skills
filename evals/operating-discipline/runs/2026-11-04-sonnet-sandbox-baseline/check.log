@@ -1,0 +1,8 @@
+FAIL: final report lacks 'Produced:'
+FAIL: final report lacks 'Checked:'
+FAIL: final report lacks 'Not verified:'
+FAIL: final report lacks 'Decisions I made'
+first todo at line none, first write/command at line none
+FAIL: no todo before first action
+FAIL: no checker run
+FAIL operating-discipline

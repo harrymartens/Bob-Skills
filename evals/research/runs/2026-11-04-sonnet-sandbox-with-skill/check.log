@@ -1,0 +1,19 @@
+sources: 4
+WARN  -     untagged claim: - A search-result summary said project skills override same-named global skills and that s
+WARN  -     untagged claim: - Inferred: `bob run "..." < prompt.txt` should behave the same way, but I did not test it
+WARN  -     untagged claim: - Non-interactive runs use only non-destructive tools by default. The `--yolo` write flag 
+WARN  -     untagged claim: - A search summary claimed `bob -p`. The current docs page does not show `-p`, so I am not
+WARN  -     untagged claim: - Inferred: it has no slide-to-image function, because nothing in the docs mentions one. T
+WARN  -     untagged claim: - The usual workaround is LibreOffice headless conversion to PDF, then rasterising the pag
+WARN  -     untagged claim: - Inferred: any practical cap comes from a client or model context limit, not from the spe
+WARN  -     untagged claim: - Q1 is wrong if skills are gated to a particular mode or version. Searched the Bob docs a
+WARN  -     untagged claim: - Q2 is wrong if a newer Bob version added a prompt-file flag or `-p`. Searched the live d
+WARN  -     untagged claim: - Q3 is wrong if python-pptx added native rendering. Searched the docs front page and foun
+WARN  -     untagged claim: - Q4 is wrong if a newer spec revision adds a limit. I read only the 2025-06-18 revision a
+OK    S1    quote found at https://bob.ibm.com/docs/shell/features/skills
+OK    S2    quote found at https://bob.ibm.com/docs/shell/getting-started/start-bobshell-non-interactive
+OK    S3    quote found at https://python-pptx.readthedocs.io/en/latest/
+OK    S4    quote found at https://modelcontextprotocol.io/specification/2025-06-18/server/tools
+
+4 sources, 4 cited, 0 errors
+PASS research

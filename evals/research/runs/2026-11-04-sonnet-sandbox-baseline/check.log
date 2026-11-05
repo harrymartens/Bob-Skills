@@ -1,0 +1,11 @@
+FAIL: missing ## Answer
+FAIL: missing ## Counter-evidence
+FAIL: missing ## Confidence
+FAIL: missing ## Sources
+FAIL: no red-team line
+sources: 0
+ERROR -     no [Sn] citation tags found in the body
+WARN  -     untagged claim: - Same name in both: project wins.
+
+0 sources, 0 cited, 1 errors
+FAIL research

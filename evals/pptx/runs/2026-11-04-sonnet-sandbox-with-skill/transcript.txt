@@ -1,0 +1,18 @@
+# Sandbox run: Sonnet subagent in Claude Code harness (proxy for Bob), with-skill
+
+## Tool calls in order
+[tool_use] Read
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Read
+[tool_use] SubagentHandback
+
+## Tool call counts
+  4 Bash
+  2 Read
+  1 SubagentHandback
+
+## Final report (verbatim)
+{"message": "The 8-slide deck is built, but it is not ready to present as is. It needs a few details from you first (listed below).\n\nFile: /tmp/claude-0/-home-user-Bob-Skills/b342c007-b76f-5ffe-9fc5-ab63ba919308/scratchpad/green/deck-2/mcp-pitch.pptx\nCheck result (check_pptx.py, verbatim): \"8 slides, 0 errors, 0 warnings\"\n\n**Slides**\n1. Title: \"Model Context Protocol: one standard way to connect AI to our tools\"\n2. The problem: custom-built integrations today versus a shared protocol (two-column).\n3. What MCP is: Tools, Resources and Prompts (three cards).\n4. Architecture: host, client and server roles, plus the stdio and Streamable HTTP transports (table).\n5. Three pilot use cases: engineering support, internal knowledge search, routine workflows with approval (cards).\n6. Risks and mitigations: data exposure, unsafe tool actions, untrusted servers, a fast-moving spec (table).\n7. Next steps: a 6-week pilot timeline, ending with \"Director approves pilot; owner named\".\n8. Sources: spec links.\n\n**Spec citations**\n- I fetched the spec pages this session and cite version 2026-07-28, which the site showed as latest. The links are on slide 8 and in the speaker notes of slides 2 to 7.\n- I confirmed the host/client/server roles, JSON-RPC 2.0, the stdio and Streamable HTTP transports, and the consent and authorization sections. I did not read the spec in full.\n\n**What I looked at**\n- I rendered all 8 slides and viewed them together on one contact sheet. I saw no clipped text or overlaps.\n- Slide 2's cards look sparse, with empty space under the bullets. It is readable but could be tightened.\n\n**What I did not verify**\n- The use cases (slide 5) and the mitigations beyond the spec's own principles, such as allowlisting servers and human approval for write actions, are my suggestions. They are not from the spec, and the speaker notes say so.\n- No numbers or benefit claims are included, because I had no data on your team's integrations.\n\n**Before you present**\n- The byline reads \"Prepared for director review \u00b7 November 2026\" because I had no name. Add yours.\n- Slide 7 has no named owner or calendar dates, since I didn't have them. Fill those in.\n- The 6-week pilot length is my proposal, so confirm or change it.\n- Slide 8 is a sources slide, so the decision ask sits on slide 7 rather than a closing slide."}

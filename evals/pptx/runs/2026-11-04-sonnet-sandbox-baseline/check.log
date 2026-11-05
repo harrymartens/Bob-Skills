@@ -1,0 +1,8 @@
+ERROR slide   1 leftover-text template residue in 'TextBox 5': '[Director name]'
+
+8 slides, 1 errors, 0 warnings
+distinct layouts: 3
+200 https://modelcontextprotocol.io
+200 https://modelcontextprotocol.io/specification
+404 https://modelcontextprotocol.io/specification/architecture
+FAIL pptx

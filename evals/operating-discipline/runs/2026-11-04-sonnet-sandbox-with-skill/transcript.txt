@@ -1,0 +1,31 @@
+# Sandbox run: Sonnet subagent in Claude Code harness (proxy for Bob), with-skill
+
+## Tool calls in order
+[tool_use] Read
+[tool_use] ToolSearch
+[tool_use] Bash
+[tool_use] TaskCreate
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Read
+[tool_use] Read
+[tool_use] Read
+[tool_use] Read
+[tool_use] Read
+[tool_use] Read
+[tool_use] Read
+[tool_use] Read
+[tool_use] SubagentHandback
+
+## Tool call counts
+  9 Read
+  6 Bash
+  1 ToolSearch
+  1 TaskCreate
+  1 SubagentHandback
+
+## Final report (verbatim)
+{"message": "Produced: /tmp/claude-0/-home-user-Bob-Skills/b342c007-b76f-5ffe-9fc5-ab63ba919308/scratchpad/green/disc-2/mcp-pitch.pptx (8 slides). The generator is build.py in the same folder. Renders are in out/page-1.png to page-8.png.\n\nSlides:\n1. Title: \"MCP: one standard plug for AI tools and our data\".\n2. Problem: every AI integration is a one-off we build and maintain.\n3. What MCP is: an open protocol, JSON-RPC 2.0, inspired by the Language Server Protocol.\n4. Architecture: host, client and server roles.\n5. Three use cases in a table: engineering Q&A, data self-service, incident triage.\n6. Risks: the spec's own warnings next to our proposed mitigations.\n7. Next steps: a decision slide proposing a 6-week pilot, with owners.\n8. Sources.\n\nSpeaker notes carry the source URLs.\n\nChecked:\n- `check_pptx.py mcp-pitch.pptx --min-slides 8 --max-slides 8` -> \"8 slides, 0 errors, 0 warnings\".\n- I opened all 8 rendered PNGs. No cut-off text, no overlaps, titles fit. Slides 2, 4, 5, 6 and 7 leave the lower third of the slide empty. It's tidy but a bit sparse.\n- I fetched the official spec pages (modelcontextprotocol.io/specification/latest, /architecture, /server/tools) and read the sentences the deck relies on. The deck cites version 2026-07-28 (latest). The checked claims:\n  - MCP is an open protocol for connecting LLM apps to external data and tools.\n  - Messages use JSON-RPC 2.0.\n  - It is inspired by the Language Server Protocol.\n  - The architecture is client-host-server.\n  - Each client has a 1:1 relationship with a server.\n  - \"Tools represent arbitrary code execution.\"\n  - Tool annotations are untrusted.\n  - \"There SHOULD always be a human in the loop.\"\n  - MCP cannot enforce these principles at the protocol level.\n\nNot verified:\n- I did not run `check_citations.py`; it does not exist in the pptx scripts directory.\n- The independent reviewer subagent from the discipline skill was not run. No subagent tool is available in this session, so the visual review was mine alone.\n- The task-list tool was also unavailable, so I tracked the plan in disc-2/TODO.md.\n- The problem slide is general reasoning, not our real connector counts or costs. The three use cases are illustrative, with no measured benefits.\n- The mitigations on slide 6 are my proposals, not spec content.\n- \"Build a server once; any MCP-capable app can use it\" is my inference from the spec's design principles.\n- The \"USB-C\" analogy is mine.\n- I did not check the version-specific wording of the spec beyond the pages I fetched. The spec page says MCP is stateless in this version, which differs from older versions. The deck makes no statefulness claim.\n\nDecisions I made for you:\n- Audience framing: a director-level pitch.\n- Palette: charcoal with Georgia titles.\n- The three use cases share one table slide, which kept the deck to 8 slides including Sources.\n- Byline: \"Engineering team proposal \u00b7 November 2026\", because no name was given.\n- The next-steps plan is a 6-week pilot, read-only first, with owners as roles (\"tech lead\", \"pilot engineer\") and relative weeks instead of dates.\n\nNeeds you:\n- Swap the illustrative use cases for the systems your team actually uses.\n- Confirm real owner names and a start date for the pilot.\n- Add your own connector or time-cost numbers to slide 2 if you have them.\n- Add your name to the byline.\n\nReady to present? Technically clean: 0 checker errors and every slide viewed. Content-wise it is a solid draft rather than final. The use cases, the pilot plan and the problem framing are placeholders from me, and the owners and dates need your input first."}

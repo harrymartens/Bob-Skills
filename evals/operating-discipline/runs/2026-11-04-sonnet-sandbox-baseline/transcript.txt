@@ -1,0 +1,18 @@
+# Sandbox run: Sonnet subagent in Claude Code harness (proxy for Bob), baseline
+
+## Tool calls in order
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Read
+[tool_use] Bash
+[tool_use] Read
+[tool_use] Bash
+[tool_use] SubagentHandback
+
+## Tool call counts
+  4 Bash
+  2 Read
+  1 SubagentHandback
+
+## Final report (verbatim)
+{"message": "The deck is saved at /tmp/claude-0/-home-user-Bob-Skills/b342c007-b76f-5ffe-9fc5-ab63ba919308/scratchpad/baseline/deck-2/mcp-pitch.pptx. It is 8 slides, 16:9. It is nearly ready to present, but not quite yet.\n\n**Slides:**\n1. Title, with placeholders for the director's name, presenter and date.\n2. The problem: N x M custom integrations, duplicated effort, vendor lock-in.\n3. What MCP is: an open standard, JSON-RPC 2.0, with Tools, Resources and Prompts, and the N x M to N + M idea.\n4. Architecture: host, client and server diagram, plus the stdio and Streamable HTTP transports and OAuth-based authorization.\n5. Three use cases: engineering assistant (Git and issues), knowledge search (wiki and docs), and ops/incident help (monitoring).\n6. Risks and mitigations: prompt injection, over-broad permissions, untrusted servers, a spec that is still evolving, and audit gaps.\n7. Next steps: an 8-week read-only pilot, ending with \"approve the pilot and name an owner\".\n8. References.\n\nSlides 3, 4 and 6 cite the spec, and every slide has speaker notes. I rendered it and fixed the text that wrapped on slides 3 and 5.\n\n**Before you present:**\n- **Spec citations:** I could not check the live spec site from here. The cited URLs are my best recollection of its structure (modelcontextprotocol.io/specification, /architecture, and the security guidance). Please click through and confirm they resolve. Also confirm which spec revision is current (they are date-versioned) and cite that one on slide 8.\n- **Placeholders:** fill in the title-slide placeholders.\n- **Use cases and timeline:** these are generic examples. Swap in the team's real systems and adjust the 8-week plan to your capacity.\n- **Benefits:** the deck gives no hard numbers, such as time saved or cost, because I had no data. Add some if your director will want them."}

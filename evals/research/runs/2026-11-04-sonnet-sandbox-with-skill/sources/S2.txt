@@ -1,0 +1,143 @@
+Starting a non-interactive session | Docs | IBM Bob
+Search ⌘ K
+Shell
+Welcome to Bob Shell Changelog Frequently Asked Questions Getting started
+Installing Uninstalling Starting an interactive session Starting a non-interactive session Best practices Usage examples Tutorials
+Core concepts
+Configuration
+Features
+Account
+Security
+Troubleshooting
+English
+Starting a non-interactive session
+Feedback Non-interactive sessions provide a method to use Bob Shell directly from the command line without entering an interactive session. Use for automation, scripting, and batch processing tasks.
+Copy Markdown
+When to use a non-interactive session
+Feedback Non-interactive sessions work best for:
+Feedback Integrating Bob Shell into automation scripts
+Feedback Processing multiple files with a single command
+Feedback Getting quick insights without starting an interactive session
+Feedback Generating documentation from code
+Feedback CI/CD pipelines that need structured JSON output
+Starting a non-interactive session
+Note:
+bob run requires a valid API key set as the BOB_API_KEY environment variable. Interactive SSO or IBMid tokens from bob chat are not reused for non-interactive sessions. If BOB_API_KEY is not set, bob run exits with an authentication error.
+To obtain an API key, see API keys .
+Feedback Use the bob run subcommand to run Bob Shell non-interactively from the command line.
+Syntax
+bob run [options] [prompt...]
+Feedback You can also pipe a prompt through stdin:
+echo "Explain this project" | bob run
+Tips for effective use
+Feedback When processing large files or projects, be specific about which files to analyze.
+Feedback Use --format json or --format stream-json for reliable parsing in scripts.
+Feedback Use --max-cost and --max-turns to cap resource use in automated workflows.
+Feedback For multi-line prompts, save them to a file and pipe to bob run :
+cat prompt.txt | bob run
+Basic usage
+Run a prompt directly
+bob run "Explain this project"
+Pipe content as input
+Feedback You can pipe text content to Bob Shell:
+cat buildError.txt | bob run "Explain this build error"
+Save results to a file
+Feedback Redirect the output to save results:
+bob run "Review @bigFile.java" > review.md
+Reference project files
+Feedback Use the @ symbol to reference files in your project:
+bob run "Summarize the functionality in @src/main.js"
+Set cost and turn limits
+bob run --max-cost 0.50 --max-turns 10 "Refactor @app.js"
+Session management
+Resume a previous session
+bob run --resume < task-i d > "Continue from where we left off"
+bob run --resume latest "Keep going"
+General utility flags
+Feedback Some flags are invoked directly with bob , not with bob run or bob chat . To list saved tasks, run the following command:
+bob --list-tasks
+Feedback The following flags are available:
+Flag Description
+--list-tasks [n|all] List saved tasks for the current workspace and exit. Defaults to 20. Pass a number or all to control how many are shown.
+--limit <n> Maximum number of tasks to display with --list-tasks .
+--show-license Display the IBM license agreement and exit.
+Machine-readable output
+Feedback When stdout is not a TTY — for example, when you pipe or redirect output — --list-tasks switches from a human-readable table to NDJSON, with one JSON object per line.
+Feedback Each line has the following shape:
+{ "id" : "<uuid>" , "title" : "<string>" , "status" : "<string>" , "workspace" : "<file-uri>" , "updatedAt" : <unix-ms> }
+Field Type Description
+id string (UUID) Unique task identifier, usable with --resume
+title string Task title, falling back to first message, then id
+status string Task status ( active , completed , paused )
+workspace string (file URI) Absolute workspace path as a file: URI
+updatedAt number Last-updated timestamp in Unix milliseconds
+Examples
+# Pipe into jq
+bob --list-tasks all | jq '.id'
+# Save to file then process
+bob --list-tasks 100 > tasks.ndjson
+# Display the license agreement
+bob --show-license
+Output formats
+Feedback The --format option controls how bob run writes its output. Use this option when capturing output for scripts or CI pipelines.
+pretty (default)
+Feedback Human-readable text output suitable for terminal display.
+json
+Feedback Emits a single JSON object after the session completes. Use this format to capture the full result for programmatic processing.
+Feedback Schema:
+Field Type Description
+type string Always "result"
+timestamp string ISO 8601 (date-time standard) completion timestamp
+status string "success" or "error"
+stats object Session statistics — see fields below
+stats.task_id string Unique identifier for the completed task
+stats.total_tokens number Total tokens used
+stats.input_tokens number Input tokens used
+stats.output_tokens number Output tokens generated
+stats.cache_read_tokens number Tokens read from cache
+stats.cache_write_tokens number Tokens written to cache
+stats.cache_ratio number Cache hit ratio
+stats.duration_ms number Session duration in milliseconds
+stats.session_costs number Total cost for the session
+stats.tool_calls number Number of tool calls made
+last_message string Final assistant message
+Feedback Example:
+bob run --format json "What is the entry point?" > result.json
+stream-json
+Feedback Emits newline-delimited JSON (NDJSON) — one event object per line — as the session progresses. Use this format to stream output into a pipeline or process events in real time.
+Feedback Event types:
+Event type Key fields Description
+message role , content , isReasoning? A user or assistant message
+tool_use tool_name , tool_id , parameters A tool call initiated by Bob
+tool_result tool_id , status , output? , error? The result returned by a tool
+error severity , message Cost/turn limit reached
+result status , stats , last_message Final summary emitted when the session ends
+Feedback Pipeline example:
+bob run --format stream-json "Audit @src/" \
+| grep '"type":"result"' \
+| jq '.last_message'
+Note:
+When running non-interactively with bob run , all tools are pre-approved. You are not prompted to approve tool calls during execution.
+Options
+Option Description
+--format <format> Output format: pretty (default), json , or stream-json
+--mode <mode> Starting mode (for example, agent , plan , ask )
+--max-cost <bobcoins> Maximum spend in Bobcoins before the session stops
+--max-turns <n> Maximum number of agentic turns before the session stops
+--disable-mcp Disable all MCP servers for this session
+--disable-subagents Disable subagent spawning for this session
+--disable-tool-groups <groups> Disable specific tool groups (comma-separated, for example execute,mcp )
+--workspace <path> Override the workspace root directory
+--log-level <level> Log verbosity: error , warn , info , debug , or trace
+--resume <task-id> Resume a previous task by task ID
+--resume latest Resume the most recent task
+--team-id <id> Run under a specific team context (required when using an API key of type general )
+--trust Mark the current folder as trusted
+--accept-license Accept the IBM license agreement and continue without prompting
+How is this topic? Good Bad
+Starting an interactive session
+Interactive sessions provide a conversational interface to Bob directly in your terminal, allowing real-time assistance with your development tasks.
+Best practices
+Follow these guidelines to get the most out of your experience with Bob Shell.
+On this page
+When to use a non-interactive session Starting a non-interactive session Syntax Tips for effective use Basic usage Run a prompt directly Pipe content as input Save results to a file Reference project files Set cost and turn limits Session management Resume a previous session General utility flags Machine-readable output Examples Output formats pretty (default) json stream-json Options

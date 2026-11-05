@@ -1,0 +1,25 @@
+# Sandbox run: Sonnet subagent in Claude Code harness (proxy for Bob), with-skill
+
+## Tool calls in order
+[tool_use] Read
+[tool_use] ToolSearch
+[tool_use] Bash
+[tool_use] WebSearch
+[tool_use] WebSearch
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] WebSearch
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] SubagentHandback
+
+## Tool call counts
+  6 Bash
+  3 WebSearch
+  1 Read
+  1 ToolSearch
+  1 SubagentHandback
+
+## Final report (verbatim)
+{"message": "Done: /tmp/claude-0/-home-user-Bob-Skills/b342c007-b76f-5ffe-9fc5-ab63ba919308/scratchpad/green/research-1/research.md. The citation checker passed with 0 errors. Its warnings are only for untagged inference and caveat lines, which is intended.\n\nFindings:\n1. Yes, Bob Shell supports SKILL.md skills (YAML front matter with name and description). It loads them from `.bob/skills/<name>/SKILL.md` in the project root and from `~/.bob/skills/` globally (IBM docs, quoted).\n2. The command is `bob run [options] [prompt...]`, and it needs the `BOB_API_KEY` environment variable. I found no flag that reads a prompt from a file. The documented way is `cat prompt.txt | bob run`. A search summary claimed `bob -p`, but the current docs page doesn't show it, so I left it out. I also left out `--yolo` (write access) as unverified.\n3. No. python-pptx has no native slide-to-image rendering. The docs describe only creating, reading and updating .pptx files. This conclusion rests on absence of evidence. The usual workaround is LibreOffice headless conversion to PDF, then rasterising, which I took from search results and did not verify.\n4. The MCP spec sets no maximum number of tools. `tools/list` supports pagination. I read only the 2025-06-18 revision, not the latest one.\n\nConfidence:\n- Q1 is high. It rests on the primary IBM docs page, quoted.\n- Q2 to Q4 are medium. Q2 and Q3 depend on \"the docs don't mention it\". Q4 is checked against only one spec revision. Not covered: Bob's mode or version restrictions on skills (sources conflicted), Bob's changelog, and the python-pptx changelog."}

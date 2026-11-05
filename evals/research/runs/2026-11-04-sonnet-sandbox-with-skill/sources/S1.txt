@@ -1,0 +1,196 @@
+Skills | Docs | IBM Bob
+Search ⌘ K
+Shell
+Welcome to Bob Shell Changelog Frequently Asked Questions Getting started
+Installing Uninstalling Starting an interactive session Starting a non-interactive session Best practices Usage examples Tutorials
+Core concepts
+Configuration
+Features Slash commands Modes Subagents Skills Auto-approve Team command ACP integration Background processes
+Account
+Security
+Troubleshooting
+English
+Features
+Skills
+Feedback Create reusable instruction sets for specialized workflows. Define custom workflows, add supporting files, and teach Bob specialized tasks for consistent results.
+Copy Markdown
+Feedback Skills are reusable instruction sets that teach Bob new workflows and specialized tasks. They are recipes that Bob follows to complete specific types of work in a consistent, repeatable manner.
+Why use skills
+Feedback Reusability : Define workflows once and use them across multiple conversations
+Feedback Consistency : Ensure Bob follows the same approach every time for specific tasks
+Feedback Specialization : Create domain-specific expertise for code reviews, testing, documentation, and more
+Feedback Team collaboration : Share standardized workflows across your team through version control
+Feedback Flexibility : Include supporting files like checklists, templates, and reference materials
+How skills work
+Feedback When you activate a skill, Bob receives the skill's instructions and gains access to any supporting files in the skill directory. Bob then follows these instructions to complete your task according to the defined workflow.
+Feedback Skills load once per conversation to avoid duplicate prompts. Bob automatically determines when to activate a skill based on your request and the skill's description.
+Creating a skill
+Basic setup
+Create a folder inside .bob/skills/ in your project root, or use ~/.bob/skills/ for global skills.
+Add a SKILL.md file inside that folder.
+Feedback Example structure:
+your-project/ .bob/ skills/ code-review/ SKILL.md
+SKILL.md format
+Feedback The SKILL.md file uses YAML front matter followed by the skill instructions:
+---
+name : code-review
+description : Review code for bugs, security issues, and best practices
+---
+When reviewing code, check for:
+- Security vulnerabilities
+- Performance issues
+- Missing error handling at API boundaries
+- Unused imports and dead code
+Provide a summary with severity levels for each finding.
+Feedback Required fields:
+Feedback name : The skill's name. Match it to the skill's folder name—Bob uses the folder name to identify and reference the skill. Folder names must be lowercase kebab-case (letters, numbers, and single hyphens), up to 64 characters; Bob skips folders with invalid names.
+Feedback description : A clear summary that helps Bob decide when to activate this skill. If you omit it, Bob uses the first line of the instructions instead.
+Feedback Instructions section:
+Everything below the --- delimiter becomes the instructions Bob receives when the skill is activated.
+Adding supporting files
+Feedback You can include additional files and subfolders alongside SKILL.md to provide reference materials, templates, checklists, scripts, or other resources. Bob can read these files automatically once the skill is activated.
+Feedback Example with supporting files:
+.bob/skills/ code-review/ SKILL.md
+checklist.md
+severity-guide.md
+scripts/ analyze.sh
+report-generator.py
+Feedback Supporting files and folders can include:
+Feedback Checklists and templates
+Feedback Reference documentation
+Feedback Configuration examples
+Feedback Scripts and utilities in subfolders
+Feedback Style guides
+Feedback Any other resources needed for the skill
+Skill locations
+Feedback Skills can be defined at two levels:
+Location Scope Use case
+<project>/.bob/skills/ Project-specific Workflows unique to this project
+~/.bob/skills/ Global Personal or organization-wide workflows
+Feedback Priority: If both locations contain a skill with the same name, the project-level skill takes precedence.
+Approving skills
+Feedback By default, Bob asks for your permission before activating a skill. This gives you control over when specialized workflows are applied.
+Feedback To skip the approval prompt, add "skill" to approval.allowed_permissions in your ~/.bob/settings/settings.json :
+"approval" : {
+"allowed_permissions" : [ "skill" ]
+}
+Feedback For all approval options, see Approval settings .
+Feedback With this setting enabled, Bob automatically activates skills when appropriate without requesting permission.
+Writing effective skills
+Clear descriptions
+Feedback Write descriptions that clearly indicate when the skill should be used. Bob relies on these descriptions to determine skill relevance.
+Feedback Good : "Review code for bugs, security issues, and best practices"
+Feedback Avoid : "Code review skill"
+Focused instructions
+Feedback Keep the main SKILL.md file focused on the core workflow. Move detailed reference material, examples, and checklists to supporting files.
+Feedback Example:
+---
+name : api-documentation
+description : Generate API documentation following OpenAPI standards
+---
+Generate API documentation that includes:
+- Endpoint descriptions
+- Request/response schemas
+- Authentication requirements
+- Example requests and responses
+Follow the style guide in `api-style-guide.md` and use the template in `api-template.md` .
+Actionable steps
+Feedback Structure instructions as clear, actionable steps that Bob can follow systematically.
+Feedback Example:
+---
+name : feature-implementation
+description : Implement new features following team standards
+---
+<Steps>
+<Step>
+Review the feature requirements.
+</Step>
+<Step>
+Create a plan with file changes needed.
+</Step>
+<Step>
+Implement the feature with tests.
+</Step>
+<Step>
+Update documentation.
+</Step>
+<Step>
+Verify all tests pass.
+</Step>
+</Steps>
+Follow coding standards in `coding-standards.md` .
+Example skills
+Code review skill
+---
+name : security-review
+description : Review code for security vulnerabilities and best practices
+---
+Perform a security-focused code review:
+<Steps>
+<Step>
+Check for common vulnerabilities:
+- SQL injection risks
+- XSS vulnerabilities
+- Authentication/authorization issues
+- Sensitive data exposure
+</Step>
+<Step>
+Review security best practices:
+- Input validation
+- Output encoding
+- Secure configuration
+- Error handling
+</Step>
+<Step>
+Provide findings with:
+- Severity level (Critical, High, Medium, Low)
+- Location in code
+- Recommended fix
+- Reference to security standards
+</Step>
+</Steps>
+Use the severity guide in `severity-levels.md` for classification.
+Documentation skill
+---
+name : api-docs
+description : Generate comprehensive API documentation
+---
+Create API documentation that includes:
+<Steps>
+<Step>
+Overview section:
+- Purpose and use cases
+- Authentication requirements
+- Base URL and versioning
+</Step>
+<Step>
+For each endpoint:
+- HTTP method and path
+- Description and purpose
+- Request parameters
+- Request body schema
+- Response codes and schemas
+- Example requests and responses
+</Step>
+<Step>
+Additional sections:
+- Error handling
+- Rate limiting
+- Pagination
+</Step>
+</Steps>
+Follow the template in `api-doc-template.md` and examples in `api-examples.md` .
+Tips and best practices
+Feedback Start simple : Begin with basic instructions and refine based on results.
+Feedback Use supporting files : Keep SKILL.md concise by moving detailed content to companion files.
+Feedback Test thoroughly : Verify skills work as expected before sharing with your team.
+Feedback Version control : Include project skills in your repository for team consistency.
+Feedback Clear naming : Use descriptive skill names that indicate their purpose.
+Feedback Single responsibility : Create focused skills for specific tasks rather than trying to handle multiple unrelated workflows.
+How is this topic? Good Bad
+Subagents
+Learn how Bob uses subagents to handle focused, self-contained tasks in isolated contexts without polluting the main conversation.
+Auto-approve
+Auto-approve actions in Bob Shell eliminate repetitive approval prompts but increase security risks. Learn safe configuration practices for read, write, and execute permissions.
+On this page
+Why use skills How skills work Creating a skill Basic setup SKILL.md format Adding supporting files Skill locations Approving skills Writing effective skills Clear descriptions Focused instructions Actionable steps Example skills Code review skill Documentation skill Tips and best practices

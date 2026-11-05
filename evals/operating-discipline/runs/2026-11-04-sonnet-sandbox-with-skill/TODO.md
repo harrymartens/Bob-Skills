@@ -1,0 +1,7 @@
+- [ ] fetch spec sentences (cached in spec/)
+- [ ] build mcp-pitch.pptx via deckkit (file exists)
+- [ ] check_pptx 0 errors
+- [ ] render, view all 8
+- [ ] reviewer subagent
+- [ ] fix, recheck
+- [ ] report Gate 4

@@ -276,7 +276,8 @@ class Deck:
         self._title(s, title)
         nrows, ncols = len(rows) + 1, len(header)
         row_h = min(Inches(0.85) if nrows <= 5 else Inches(0.65), BODY_H / nrows)
-        shape = s.shapes.add_table(nrows, ncols, MARGIN, BODY_TOP, W - 2 * MARGIN, row_h * nrows)
+        top = BODY_TOP + max(0, (BODY_H - row_h * nrows) // 4)  # short tables sit a little below the title, not glued to it
+        shape = s.shapes.add_table(nrows, ncols, MARGIN, top, W - 2 * MARGIN, row_h * nrows)
         tbl = shape.table
         if col_widths:
             total = sum(col_widths)

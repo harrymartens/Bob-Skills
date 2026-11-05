@@ -59,6 +59,15 @@ an exact quote from it, and `scripts/check_citations.py` refuses the document ot
 A source line needs the URL, an em dash or hyphen, and a quote of at least six words in
 straight or curly double quotes. One tag per line. Tags are numbered in first-use order.
 
+## Fetching inside Bob
+
+Bob has no built-in web tool unless `experiments.webFetch` is enabled in settings. The reliable
+path is `execute_command` running `python scripts/fetch_page.py` (curl under the hood). For IBM
+product docs and Bob's own docs, prefer the `ibm-docs` MCP server if it is configured
+(`search_ibm_docs` then `fetch_ibm_doc`; `search_bob_docs` then `fetch_bob_doc`): it returns clean
+text and the canonical URL. Save what it returns to `sources/S<n>.txt` so the checker can verify
+the quote offline.
+
 ## When the page cannot be fetched
 
 - Try the raw form: GitHub `raw.githubusercontent.com`, docs sites' `.md` mirror, or `?format=text`.

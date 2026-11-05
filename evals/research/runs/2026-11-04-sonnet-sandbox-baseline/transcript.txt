@@ -1,0 +1,25 @@
+# Sandbox run: Sonnet subagent in Claude Code harness (proxy for Bob), baseline
+
+## Tool calls in order
+[tool_use] ToolSearch
+[tool_use] WebSearch
+[tool_use] WebSearch
+[tool_use] WebSearch
+[tool_use] WebFetch
+[tool_use] WebFetch
+[tool_use] WebFetch
+[tool_use] WebFetch
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] Bash
+[tool_use] SubagentHandback
+
+## Tool call counts
+  4 WebFetch
+  3 WebSearch
+  3 Bash
+  1 ToolSearch
+  1 SubagentHandback
+
+## Final report (verbatim)
+{"message": "Done: /tmp/claude-0/-home-user-Bob-Skills/b342c007-b76f-5ffe-9fc5-ab63ba919308/scratchpad/baseline/research-1/research.md\n\nAnswers:\n1. Bob supports SKILL.md skills. Each skill is a folder with SKILL.md and YAML front matter (name, description). They load from `<project>/.bob/skills/` and `~/.bob/skills/`, and the project one wins on a name clash. Docs disagree on which mode is needed (older IDE docs say Advanced mode, a later community post says Agent mode).\n2. Bob has no prompt-file flag. The docs say to pipe the file in: `cat prompt.txt | bob run` (syntax `bob run [options] [prompt...]`, needs `BOB_API_KEY`). One search summary said `bob -p \"...\"`, but the docs page and its raw HTML only show `bob run`.\n3. No. python-pptx has no native slide-to-image rendering. The usual workaround is LibreOffice to PDF, then to images.\n4. The MCP spec sets no maximum number of tools. `tools/list` is paginated. Any cap comes from the client, not the spec.\n\nConfidence: high on 1, 3 and 4. Medium on 2: `bob run` with a pipe is documented, but the `-p` conflict is unresolved, so test it on your installed version before putting it in the memo.\nCaveat: I did not read the full MCP spec for \"no limit\". I read the tools page, which states no cap, and I am inferring from that."}

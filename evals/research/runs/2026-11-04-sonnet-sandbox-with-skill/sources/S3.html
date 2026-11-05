@@ -1,0 +1,359 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>python-pptx &#8212; python-pptx 1.0.0 documentation</title>
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/searchtools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="user/intro.html" /> 
+  
+<!-- RTD Extra Head -->
+
+
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "index", "programming_language": "py", "project": "python-pptx", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "armstrong", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+
+
+<!-- end RTD <extrahead> -->
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="python-pptx" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/" /><meta name="readthedocs-http-status" content="200" /></head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="user/intro.html" title="Introduction"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">python-pptx 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python-pptx">
+<h1>python-pptx<a class="headerlink" href="#python-pptx" title="Permalink to this headline">¶</a></h1>
+<p>Release v1.0.0 (<a class="reference internal" href="user/install.html#install"><span class="std std-ref">Installation</span></a>)</p>
+<p><em>python-pptx</em> is a Python library for creating, reading, and updating PowerPoint (.pptx)
+files.</p>
+<p>A typical use would be generating a PowerPoint presentation from dynamic content such as
+a database query, analytics output, or a JSON payload, perhaps in response to an HTTP
+request and downloading the generated PPTX file in response. It runs on any Python
+capable platform, including macOS and Linux, and does not require the PowerPoint
+application to be installed or licensed.</p>
+<p>It can also be used to analyze PowerPoint files from a corpus, perhaps to extract search
+indexing text and images.</p>
+<p>In can also be used to simply automate the production of a slide or two that would be
+tedious to get right by hand, which is how this all got started.</p>
+<p>More information is available in the <a class="reference external" href="https://python-pptx.readthedocs.org/en/latest/">python-pptx documentation</a>.</p>
+<p>Browse <a class="reference external" href="https://python-pptx.readthedocs.org/en/latest/user/quickstart.html">examples with screenshots</a> to get a quick idea what you can do with
+python-pptx.</p>
+<div class="section" id="philosophy">
+<h2>Philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h2>
+<p><cite>python-pptx</cite> aims to broadly support the PowerPoint format (PPTX, PowerPoint 2007 and later),
+but its primary commitment is to be <em>industrial-grade</em>, that is, suitable for use in a
+commercial setting. Maintaining this robustness requires a high engineering standard
+which includes a comprehensive two-level (e2e + unit) testing regimen. This discipline
+comes at a cost in development effort/time, but we consider reliability to be an
+essential requirement.</p>
+</div>
+<div class="section" id="feature-support">
+<h2>Feature Support<a class="headerlink" href="#feature-support" title="Permalink to this headline">¶</a></h2>
+<p><cite>python-pptx</cite> has the following capabilities:</p>
+<ul class="simple">
+<li>Round-trip any Open XML presentation (.pptx file) including all its elements</li>
+<li>Add slides</li>
+<li>Populate text placeholders, for example to create a bullet slide</li>
+<li>Add image to slide at arbitrary position and size</li>
+<li>Add textbox to a slide; manipulate text font size and bold</li>
+<li>Add table to a slide</li>
+<li>Add auto shapes (e.g. polygons, flowchart shapes, etc.) to a slide</li>
+<li>Add and manipulate column, bar, line, and pie charts</li>
+<li>Access and change core document properties such as title and subject</li>
+<li>And many others …</li>
+</ul>
+<p>Even with all <cite>python-pptx</cite> does, the PowerPoint document format is very rich and there are still
+features <cite>python-pptx</cite> does not support.</p>
+</div>
+<div class="section" id="new-features-releases">
+<h2>New features/releases<a class="headerlink" href="#new-features-releases" title="Permalink to this headline">¶</a></h2>
+<p>New features are generally added via sponsorship. If there’s a new feature you need for
+your use case, feel free to reach out at the email address on the github.com/scanny
+profile page. Many of the most used features such as charts were added this way.</p>
+</div>
+<div class="section" id="user-guide">
+<h2>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/quickstart.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/presentations.html">Working with Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/slides.html">Working with Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/understanding-shapes.html">Understanding Shapes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/autoshapes.html">Working with AutoShapes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/placeholders-understanding.html">Understanding placeholders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/placeholders-using.html">Working with placeholders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/text.html">Working with text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/charts.html">Working with charts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/table.html">Working with tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/notes.html">Working with Notes Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/use-cases.html">Use cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/concepts.html">Concepts</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="community-guide">
+<h2>Community Guide<a class="headerlink" href="#community-guide" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="community/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community/updates.html">Software Updates</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="api-documentation">
+<span id="api"></span><h2>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/presentation.html">Presentations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/presentation.html#presentation-function"><code class="docutils literal notranslate"><span class="pre">Presentation</span></code> function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/presentation.html#presentation-objects"><code class="docutils literal notranslate"><span class="pre">Presentation</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/presentation.html#coreproperties-objects"><code class="docutils literal notranslate"><span class="pre">CoreProperties</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/slides.html">Slides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#slides-objects"><code class="docutils literal notranslate"><span class="pre">Slides</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#slide-objects"><code class="docutils literal notranslate"><span class="pre">Slide</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#slidelayouts-objects"><code class="docutils literal notranslate"><span class="pre">SlideLayouts</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#slidelayout-objects"><code class="docutils literal notranslate"><span class="pre">SlideLayout</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#slidemasters-objects"><code class="docutils literal notranslate"><span class="pre">SlideMasters</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#slidemaster-objects"><code class="docutils literal notranslate"><span class="pre">SlideMaster</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#slideplaceholders-objects"><code class="docutils literal notranslate"><span class="pre">SlidePlaceholders</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/slides.html#notesslide-objects"><code class="docutils literal notranslate"><span class="pre">NotesSlide</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/shapes.html">Shapes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#slideshapes-objects"><code class="docutils literal notranslate"><span class="pre">SlideShapes</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#groupshapes-objects"><code class="docutils literal notranslate"><span class="pre">GroupShapes</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#shape-objects-in-general">Shape objects in general</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#shape-objects-autoshapes"><code class="docutils literal notranslate"><span class="pre">Shape</span></code> objects (AutoShapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#connector-objects"><code class="docutils literal notranslate"><span class="pre">Connector</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#freeformbuilder-objects"><code class="docutils literal notranslate"><span class="pre">FreeformBuilder</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#picture-objects"><code class="docutils literal notranslate"><span class="pre">Picture</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#graphicframe-objects"><code class="docutils literal notranslate"><span class="pre">GraphicFrame</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/shapes.html#groupshape-objects"><code class="docutils literal notranslate"><span class="pre">GroupShape</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/placeholders.html">Placeholders</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#masterplaceholder-objects"><code class="docutils literal notranslate"><span class="pre">MasterPlaceholder</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#layoutplaceholder-objects"><code class="docutils literal notranslate"><span class="pre">LayoutPlaceholder</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#chartplaceholder-objects">ChartPlaceholder objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#pictureplaceholder-objects">PicturePlaceholder objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#tableplaceholder-objects">TablePlaceholder objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#placeholdergraphicframe-objects">PlaceholderGraphicFrame objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#placeholderpicture-objects">PlaceholderPicture objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/placeholders.html#placeholderformat-objects">_PlaceholderFormat objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/table.html">Table-related objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/table.html#table-objects"><code class="docutils literal notranslate"><span class="pre">Table</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/table.html#column-objects"><code class="docutils literal notranslate"><span class="pre">_Column</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/table.html#row-objects"><code class="docutils literal notranslate"><span class="pre">_Row</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/table.html#cell-objects"><code class="docutils literal notranslate"><span class="pre">_Cell</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/chart-data.html">ChartData objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/chart.html">Charts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#chart-objects"><code class="docutils literal notranslate"><span class="pre">Chart</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#legend-objects"><code class="docutils literal notranslate"><span class="pre">Legend</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#axis-objects"><code class="docutils literal notranslate"><span class="pre">Axis</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#majorgridlines-objects"><code class="docutils literal notranslate"><span class="pre">MajorGridlines</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#ticklabels-objects"><code class="docutils literal notranslate"><span class="pre">TickLabels</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#baseplot-objects"><code class="docutils literal notranslate"><span class="pre">_BasePlot</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#datalabels-objects"><code class="docutils literal notranslate"><span class="pre">DataLabels</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#series-objects"><code class="docutils literal notranslate"><span class="pre">Series</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/chart.html#point-objects"><code class="docutils literal notranslate"><span class="pre">Point</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/text.html">Text-related objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/text.html#textframe-objects"><code class="docutils literal notranslate"><span class="pre">TextFrame</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/text.html#font-objects"><code class="docutils literal notranslate"><span class="pre">Font</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/text.html#paragraph-objects"><code class="docutils literal notranslate"><span class="pre">_Paragraph</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/text.html#run-objects"><code class="docutils literal notranslate"><span class="pre">_Run</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/action.html">Click Action-related Objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/action.html#actionsetting-objects"><code class="docutils literal notranslate"><span class="pre">ActionSetting</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/action.html#hyperlink-objects"><code class="docutils literal notranslate"><span class="pre">Hyperlink</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/dml.html">DrawingML objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/dml.html#chartformat-objects"><code class="docutils literal notranslate"><span class="pre">ChartFormat</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/dml.html#fillformat-objects"><code class="docutils literal notranslate"><span class="pre">FillFormat</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/dml.html#lineformat-objects"><code class="docutils literal notranslate"><span class="pre">LineFormat</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/dml.html#colorformat-objects"><code class="docutils literal notranslate"><span class="pre">ColorFormat</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/dml.html#rgbcolor-objects"><code class="docutils literal notranslate"><span class="pre">RGBColor</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/dml.html#shadowformat-objects"><code class="docutils literal notranslate"><span class="pre">ShadowFormat</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/image.html">Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/image.html#image-objects"><code class="docutils literal notranslate"><span class="pre">Image</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/exc.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/util.html"><code class="docutils literal notranslate"><span class="pre">util</span></code> Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/enum/index.html">Enumerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoAutoShapeType.html"><code class="docutils literal notranslate"><span class="pre">MSO_AUTO_SHAPE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoAutoSize.html"><code class="docutils literal notranslate"><span class="pre">MSO_AUTO_SIZE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoConnectorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_CONNECTOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoFillType.html"><code class="docutils literal notranslate"><span class="pre">MSO_FILL_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoLanguageId.html"><code class="docutils literal notranslate"><span class="pre">MSO_LANGUAGE_ID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoLineDashStyle.html"><code class="docutils literal notranslate"><span class="pre">MSO_LINE_DASH_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoPatternType.html"><code class="docutils literal notranslate"><span class="pre">MSO_PATTERN_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoShapeType.html"><code class="docutils literal notranslate"><span class="pre">MSO_SHAPE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoTextUnderlineType.html"><code class="docutils literal notranslate"><span class="pre">MSO_TEXT_UNDERLINE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/MsoVerticalAnchor.html"><code class="docutils literal notranslate"><span class="pre">MSO_VERTICAL_ANCHOR</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/PpActionType.html"><code class="docutils literal notranslate"><span class="pre">PP_ACTION_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/PpMediaType.html"><code class="docutils literal notranslate"><span class="pre">PP_MEDIA_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/PpParagraphAlignment.html"><code class="docutils literal notranslate"><span class="pre">PP_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/PpPlaceholderType.html"><code class="docutils literal notranslate"><span class="pre">PP_PLACEHOLDER_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlAxisCrosses.html"><code class="docutils literal notranslate"><span class="pre">XL_AXIS_CROSSES</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlCategoryType.html"><code class="docutils literal notranslate"><span class="pre">XL_CATEGORY_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlChartType.html"><code class="docutils literal notranslate"><span class="pre">XL_CHART_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlDataLabelPosition.html"><code class="docutils literal notranslate"><span class="pre">XL_DATA_LABEL_POSITION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlLegendPosition.html"><code class="docutils literal notranslate"><span class="pre">XL_LEGEND_POSITION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlMarkerStyle.html"><code class="docutils literal notranslate"><span class="pre">XL_MARKER_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlTickLabelPosition.html"><code class="docutils literal notranslate"><span class="pre">XL_TICK_LABEL_POSITION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/XlTickMark.html"><code class="docutils literal notranslate"><span class="pre">XL_TICK_MARK</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum/ExcelNumFormat.html">Excel Number Formats</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="contributor-guide">
+<h2>Contributor Guide<a class="headerlink" href="#contributor-guide" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev/runtests.html">Running the test suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/xmlchemy.html">Understanding <code class="docutils literal notranslate"><span class="pre">xmlchemy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/development_practices.html">Development Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/philosophy.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/analysis/index.html">Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/resources/index.html">Resources</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">python-pptx</a><ul>
+<li><a class="reference internal" href="#philosophy">Philosophy</a></li>
+<li><a class="reference internal" href="#feature-support">Feature Support</a></li>
+<li><a class="reference internal" href="#new-features-releases">New features/releases</a></li>
+<li><a class="reference internal" href="#user-guide">User Guide</a></li>
+<li><a class="reference internal" href="#community-guide">Community Guide</a></li>
+<li><a class="reference internal" href="#api-documentation">API Documentation</a></li>
+<li><a class="reference internal" href="#contributor-guide">Contributor Guide</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="user/intro.html"
+                        title="next chapter">Introduction</a></p><h3>Useful Links</h3>
+<ul>
+  <li><a href="http://github.com/scanny/python-pptx">python-pptx @ GitHub</a></li>
+  <li><a href="http://pypi.python.org/pypi/python-pptx">python-pptx @ PyPI</a></li>
+  <li><a href="http://github.com/scanny/python-pptx/issues">Issue Tracker</a></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="user/intro.html" title="Introduction"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">python-pptx 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2012, 2013, Steve Canny.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.8.6.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

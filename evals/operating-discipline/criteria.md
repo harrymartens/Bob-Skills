@@ -9,3 +9,11 @@ Same task as evals/pptx. Judged on the transcript, not the artifact:
 
 check.sh greps the transcript for the Gate 4 shape and for the order "todo before write".
 Baseline (no skill, 2026-11-04, Sonnet, 3 reps): 0/3 wrote todos, 0/3 delegated, 0/3 had a "Not verified" line.
+
+## Sandbox result (2026-11-04, Sonnet subagent inside Claude Code, as a proxy for Bob)
+
+- Baseline: FAIL (no todo, no delegation, no checker, no report shape).
+- With skill (v2): report shape present, checker run, todo written after one setup command
+  (`mkdir`), **no delegation because the sandbox harness gives nested subagents no subagent tool**.
+  Gate 2 is therefore untested here; `make eval-operating-discipline` under Bob is the real test,
+  since Bob exposes `spawn_subagent` to the main task.
