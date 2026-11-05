@@ -73,6 +73,19 @@ python-pptx inside your build script; the helpers carry the fit logic and the ru
 - If the user gave a template (.pptx/.potx), open it with python-pptx, reuse its layouts,
   and skip deckkit's `Deck()`; the checker and renderer still apply.
 
+## Editing an existing deck
+
+1. `python scripts/inspect_pptx.py deck.pptx` lists every slide, shape name, position and text.
+   Work from that inventory; never guess shape names.
+2. Edit with python-pptx and save under a new name:
+   - change text: `run.text = "..."` on the existing runs (keeps formatting); `shape.text_frame.text = ...` wipes it
+   - delete slide N: `xml_slides = prs.slides._sldIdLst; sl = list(xml_slides)[N-1]; prs.part.drop_rel(sl.rId); xml_slides.remove(sl)`
+   - reorder: move the `<p:sldId>` element inside `prs.slides._sldIdLst`
+   - add a slide in the deck's own style: `prs.slides.add_slide(prs.slide_layouts[i])` and fill its placeholders
+   - replace a picture: delete the old shape (`sh._element.getparent().remove(sh._element)`) and `add_picture` at the same box
+   - duplicating a slide is not supported by python-pptx; rebuild it with the same layout instead
+3. Run `check_pptx.py` and `render.sh` on the new file, then the Gate 4 report. Mention which slides changed.
+
 ## Dependencies
 
 `pip install python-pptx pillow` for building and checking. `render.sh` needs LibreOffice
