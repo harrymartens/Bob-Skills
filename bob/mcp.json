@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ibm-docs": {
+      "command": "python3",
+      "args": ["/ABSOLUTE/PATH/TO/Bob-Skills/mcp/ibm-docs/server.py"],
+      "alwaysAllow": ["search_ibm_docs", "fetch_ibm_doc"]
+    }
+  }
+}

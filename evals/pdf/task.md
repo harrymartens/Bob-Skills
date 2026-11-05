@@ -1,0 +1,1 @@
+Produce a one-page PDF summary sheet titled "MCP pilot: decision summary" with sections Summary, Scope, Risks, Decision needed, and a small table of the three pilot use cases with an owner column. Save as decision-summary.pdf in the current directory. Tell me how you checked it.
