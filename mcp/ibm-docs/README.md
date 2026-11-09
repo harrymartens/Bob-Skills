@@ -19,6 +19,21 @@ If IBM changes or closes the API the tools return an `error` field rather than g
 | `search_bob_docs(query, limit=10)` | keyword match over bob.ibm.com/docs sitemap paths (the site has no search API) |
 | `fetch_bob_doc(url, max_chars=20000)` | one bob.ibm.com/docs page as text |
 
+## Try it from a terminal (no Bob needed)
+
+```bash
+pip install "mcp>=1.2"
+cd mcp/ibm-docs
+python3 server.py --call search_bob_docs '{"query": "skills"}'
+python3 server.py --call search_ibm_docs '{"query": "db2 backup", "limit": 3}'
+python3 server.py --call fetch_ibm_doc '{"href_or_url": "<href from the search result>"}'
+python3 selftest.py        # full stdio round-trip through the MCP protocol
+```
+
+The server does not run in the background. Bob (or any MCP client) launches it over stdio when a
+tool is called and stops it afterwards. There is no local copy of the docs; results come from
+IBM's live API and are cached for an hour in `~/.cache/ibm-docs-mcp`.
+
 ## Install into Bob
 
 ```bash

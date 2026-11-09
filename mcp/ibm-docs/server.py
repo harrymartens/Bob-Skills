@@ -15,6 +15,10 @@ itself honestly. Works with mcp>=1.2 (FastMCP) and mcp 2.x (MCPServer); stdlib H
 
 Run:  python3 server.py            (stdio, what Bob's mcp.json uses)
 Test: python3 selftest.py          (spawns this server over stdio and calls each tool)
+Try:  python3 server.py --call search_ibm_docs '{"query": "db2 backup", "limit": 3}'
+      python3 server.py --call fetch_ibm_doc '{"href_or_url": "<href from the search>"}'
+      python3 server.py --call search_bob_docs '{"query": "skills"}'
+
 """
 from __future__ import annotations
 
@@ -289,5 +293,13 @@ def fetch_bob_doc(url: str, max_chars: int = 20000) -> str:
     return json.dumps({"title": title, "url": url, "chars": len(text), "text": _clip(text, max_chars)}, indent=1)
 
 
+TOOLS = {f.__name__: f for f in (search_ibm_docs, fetch_ibm_doc, list_ibm_products, get_ibm_toc, search_bob_docs, fetch_bob_doc)}
+
 if __name__ == "__main__":
-    mcp.run("stdio")
+    if len(sys.argv) >= 3 and sys.argv[1] == "--call":
+        name, args = sys.argv[2], json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+        if name not in TOOLS:
+            sys.exit(f"unknown tool {name}; one of {sorted(TOOLS)}")
+        print(TOOLS[name](**args))
+    else:
+        mcp.run("stdio")
